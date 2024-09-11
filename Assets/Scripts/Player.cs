@@ -28,4 +28,11 @@ public class Player : MonoBehaviour
             }   
             character.Move(direction * Time.deltaTime);
         }
+    private void OnTriggerEnter(Collider character)
+        {
+            if (character.CompareTag("Obstacle"))
+                {
+                    GameManager.Instance.GameOver();
+                }
+        }
 }

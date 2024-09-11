@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class TreeSpawner : MonoBehaviour
 {
     [System.Serializable]
     public struct SpawnableObj
@@ -22,11 +22,11 @@ public class Spawner : MonoBehaviour
                         }
                     chance -= obj.spawnChance;
                 }
-            Invoke("Spawn", Random.Range(1.4f,2f));
+            Invoke("Spawn", Random.Range(1f,1.8f));
         }
     private void OnEnable()
         {
-            Invoke("Spawn", Random.Range(1.4f,2f));
+            Invoke("Spawn", Random.Range(1f,1.8f));
         }
     private void OnDisable()
         {
