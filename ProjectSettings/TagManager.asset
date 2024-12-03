@@ -7,6 +7,10 @@ TagManager:
   - Floor
   - Tree
   - Obstacle
+  - Audio
+  - Potion
+  - Diamond
+  - SpeedPotion
   layers:
   - Default
   - TransparentFX

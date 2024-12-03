@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8443be1fb3a5c574a991d77ebb407528, type: 3}
+  m_Name: Character Database
+  m_EditorClassIdentifier: 
+  character:
+  - name: Crabby
+    characterSprites: {fileID: 21300000, guid: 31b16883e76c649449f65dce6579813b, type: 3}
+  - name: Captain Clown Nose
+    characterSprites: {fileID: 21300000, guid: 486a5541fe815b34cacadc48e154c5c7, type: 3}
+  - name: Pink Star
+    characterSprites: {fileID: 21300000, guid: 5f40fdf4c5d78694ead13fa46198209e, type: 3}
+  - name: Fierce Tooth
+    characterSprites: {fileID: 21300000, guid: 14a880bf25698194c987de557eaff57d, type: 3}

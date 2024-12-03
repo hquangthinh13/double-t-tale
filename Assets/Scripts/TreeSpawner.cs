@@ -30,6 +30,6 @@ public class TreeSpawner : MonoBehaviour
         }
     private void OnDisable()
         {
-            CancelInvoke();
+            CancelInvoke(nameof(Spawn));
         }
 }
