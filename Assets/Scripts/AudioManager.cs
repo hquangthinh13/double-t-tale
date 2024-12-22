@@ -15,13 +15,13 @@ public class AudioManager : MonoBehaviour
     public AudioClip start2;
     public AudioClip hit;
     public AudioClip[] background;
-    public void Start()
+    private void Start()
     {
         int i = Random.Range(0,background.Length);
         musicSource.clip = background[i];
         musicSource.Play();
     }
-    public void Update()
+    private void Update()
     {
         if (musicSource.isPlaying!=true)
         {

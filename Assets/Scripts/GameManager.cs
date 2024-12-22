@@ -1,26 +1,33 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditorInternal;
+using Unity.VisualScripting;
 //Quan ly toan bo game, ve scoring, UI...
 public class GameManager : MonoBehaviour
 {
+    private static GameManager Instance;
+    //get cho quyen access tu moi nguon, nhung private set chi cho class nay duoc tuy chinh -> dam bao class nay chi co 1 instance
+    public static GameManager GetInstance()
+    {
+        if (Instance == null)
+        {
+            Instance = new GameManager();
+        }
+        return Instance;
+    }
     private Player player;
     public Spawner spawner;
     public TreeSpawner fronttreespawner;
     public TreeSpawner backtreespawner;
-    //public AudioSource audioSource;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI endGameScoreText;
     public float score;
-    // public Button Retry;
-    // public Button Home;
-    // public Button Exit;
-    // public Image Title;
-    AudioManager audioManager;
+
+    private AudioManager audioManager;
     public GameObject WaterReflect;
     public GameObject EndGameMenu;
-    public static GameManager Instance { get; private set; } 
-    //get cho quyen access tu moi nguon, nhung private set chi cho class nay duoc tuy chinh
+   
     public float gameSpeed { get; private set; } 
     public float initialGameSpeed = 5f;
     public float gameSpeedChange = 0.1f;
@@ -46,11 +53,13 @@ public class GameManager : MonoBehaviour
     static public bool diamondTrigger = false;
     private void Update()
     {
+        audioManager.musicSource.pitch += 0.00001f;
+        audioManager.SFXSource.pitch += 0.00001f;
         if (speedPotionTrigger)
         { 
             gameSpeed -= 0.7f;
-            AudioSpeed.audioManager.musicSource.pitch -=0.05f;
-            AudioSpeed.audioManager.SFXSource.pitch -=0.05f;
+            audioManager.musicSource.pitch -=0.05f;
+            audioManager.SFXSource.pitch -=0.05f;
         }
         speedPotionTrigger = false;
         gameSpeed = gameSpeed + gameSpeedChange * Time.deltaTime;
@@ -61,7 +70,6 @@ public class GameManager : MonoBehaviour
     }
     public void NewGame()
     {
-        audioManager.PlaySFX(audioManager.start);
         score = 0;
         HealthManager.health = 3;
         MovingAfterSpawning[] obstacles = FindObjectsOfType<MovingAfterSpawning>();
@@ -69,9 +77,10 @@ public class GameManager : MonoBehaviour
             {
                 Destroy(obs.gameObject);
             }
+        audioManager.musicSource.pitch = 0.8f;
+        audioManager.SFXSource.pitch = 0.8f;
         gameSpeed = initialGameSpeed;
         enabled = true;
-        //player.gameObject.SetActive(false);
         player.gameObject.SetActive(true);
         spawner.gameObject.SetActive(true);
         fronttreespawner.gameObject.SetActive(true);
@@ -79,11 +88,8 @@ public class GameManager : MonoBehaviour
         WaterReflect.gameObject.SetActive(true);
         backtreespawner.gameObject.SetActive(true);
         endGameScoreText.gameObject.SetActive(false);
-        audioManager.musicSource.gameObject.SetActive(true);
-        // Retry.gameObject.SetActive(false);
-        // Home.gameObject.SetActive(false);
-        // Exit.gameObject.SetActive(false);
-        // Title.gameObject.SetActive(false);
+        //audioManager.musicSource.gameObject.SetActive(true);
+        audioManager.PlaySFX(audioManager.start);
         EndGameMenu.gameObject.SetActive(false);
     }
     public void GameOver()
@@ -91,18 +97,14 @@ public class GameManager : MonoBehaviour
         gameSpeed = 0f;
         enabled = false;
         //audioSource.Stop();
+        audioManager.musicSource.Stop();
         endGameScoreText.gameObject.SetActive(true);
         endGameScoreText.text = Mathf.FloorToInt(score).ToString("D5");
-        // Title.gameObject.SetActive(true);
-        // Retry.gameObject.SetActive(true);
-        // Home.gameObject.SetActive(true);
-        // Exit.gameObject.SetActive(true);
         EndGameMenu.gameObject.SetActive(true);
         player.gameObject.SetActive(false);
         spawner.gameObject.SetActive(false);
         fronttreespawner.gameObject.SetActive(false);
         backtreespawner.gameObject.SetActive(false);
-        audioManager.musicSource.gameObject.SetActive(false);
-        //WaterReflect.gameObject.SetActive(false);
+        //audioManager.musicSource.gameObject.SetActive(false);
     }
 }

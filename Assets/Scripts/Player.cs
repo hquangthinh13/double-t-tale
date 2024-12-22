@@ -3,11 +3,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //public Sprite[] sprites;
-    //private int spritesIndex;
     private SpriteRenderer spriteRenderer;
     public CharacterDatabase characterDB;
-    AudioManager audioManager;
+    private AudioManager audioManager;
 
     public SpriteRenderer artworkSprite;
     private int selectedOption = 0;

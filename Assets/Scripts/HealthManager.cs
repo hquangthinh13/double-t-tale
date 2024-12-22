@@ -6,8 +6,8 @@ public class HealthManager : MonoBehaviour
 {
     public static int health = 3;
     public Image[] hearts;
-    public Sprite fullHeart;
-    public Sprite emptyHeart;
+    private Sprite fullHeart;
+    private Sprite emptyHeart;
     void Update()
     {
         foreach (Image img in hearts){

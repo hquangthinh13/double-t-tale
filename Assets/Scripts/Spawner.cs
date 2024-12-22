@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
     public SpawnableObj[] items;
     private float obstacleTimer;
     private float itemTimer;
-
+  
     private void Update()
     {
         obstacleTimer -= Time.deltaTime;
@@ -45,37 +45,5 @@ public class Spawner : MonoBehaviour
             chance -= obj.spawnChance;
         }
     }
-    // private void Spawn()
-    // {
-    //     float chance = Random.Range(0f,1f); //Set spawn chance tu 0 den 1
-    //     foreach (var obj in obstacles)
-    //     {   
-    //         if (chance<obj.spawnChance)
-    //         {
-    //             GameObject Spawning = Instantiate(obj.prefab);
-    //             //Spawning.transform.position = Spawning.transform.position + transform.position;
-    //             break;
-    //         }
-    //         chance -= obj.spawnChance;
-    //     }
-    //     chance = Random.Range(0f,1f);
-    //     foreach (var item in items)
-    //     {
-    //         if (chance<item.spawnChance)
-    //         {
-    //             GameObject Spawning = Instantiate(item.prefab);
-    //             break;
-    //         }
-    //         chance -= item.spawnChance;
-    //     }
-    //     Invoke("Spawn", Random.Range(1.4f,2f));
-    // }
-    // private void OnEnable()
-    // {
-    //     Invoke("Spawn", Random.Range(1.4f,2f));
-    // }
-    // private void OnDisable()
-    // {
-    //     CancelInvoke(nameof(Spawn));
-    // }
+
 }

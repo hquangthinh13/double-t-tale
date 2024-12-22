@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "The Double T's Tale.sln"
+    "dotnet.defaultSolution": "double-t-tale.sln"
 }
